@@ -6,29 +6,30 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ImageUpdateTask extends AsyncTask<Integer, Void, Void> {
+public class ImageUpdateTask extends AsyncTask<Void, Void, Void> {
 
     ImageView image;
+    int waitTime;
+    int imageResource;
 
-    public ImageUpdateTask(ImageView image) {
+    public ImageUpdateTask(ImageView image, int waitTime, int imageResource) {
         this.image = image;
+        this.waitTime = waitTime;
+        this.imageResource = imageResource;
     }
 
     @Override
-    protected Void doInBackground(Integer... integers) {
-
-        assert(integers.length == 2);
-        ArrayList<Integer> params = new ArrayList<Integer>(Arrays.asList(integers));
-
+    protected Void doInBackground(Void... voids) {
         try {
-            Thread.sleep(params.get(0) * 1000);
+            Thread.sleep(waitTime);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        image.setImageResource(params.get(1));
-
         return null;
     }
 
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        image.setImageResource(imageResource);
+    }
 }

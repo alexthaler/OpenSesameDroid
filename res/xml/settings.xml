@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+            android:inputType="text"
+            android:title="Server Address"
+            android:summary="Set the server to connect to."
+            android:key="@string/settingsServerAddress"
+            android:persistent="true"
+            android:defaultValue="http://"/>
+
+    <EditTextPreference
+                android:inputType="text"
+                android:title="RequestParameters"
+                android:summary="Params to send with request"
+                android:key="@string/settingsRequestParameters"
+                android:persistent="true"/>
+
+</PreferenceScreen>

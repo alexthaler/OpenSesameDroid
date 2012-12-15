@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">OpenSesame</string>
     <string name="lockButton">lockButton</string>
+
+
+    <string name="settingsServerAddress">settingServerAddress</string>
+    <string name="settingsRequestParameters">settingRequestParameters</string>
 </resources>
