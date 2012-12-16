@@ -1,8 +1,10 @@
 package com.fortysevensixteen.activity;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.view.MenuItem;
 import com.fortysevensixteen.R;
 
 public class SettingsActivity extends PreferenceActivity {
@@ -16,4 +18,16 @@ public class SettingsActivity extends PreferenceActivity {
 
         addPreferencesFromResource(R.xml.settings);
     }
+
+    @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    finish();
+                    return true;
+                default:
+                    return true;
+            }
+        }
+
 }

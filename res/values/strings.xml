@@ -6,4 +6,5 @@
 
     <string name="settingsServerAddress">settingServerAddress</string>
     <string name="settingsRequestParameters">settingRequestParameters</string>
+    <string name="settingsDisplayUrl">settingDisplayURL</string>
 </resources>

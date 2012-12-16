@@ -16,4 +16,11 @@
                 android:key="@string/settingsRequestParameters"
                 android:persistent="true"/>
 
+    <CheckBoxPreference
+        android:title="Display Url"
+        android:summary="Wether the url should be displayed on the main page."
+        android:key="@string/settingsDisplayUrl"
+        android:defaultValue="true"
+        android:persistent="true"/>
+
 </PreferenceScreen>

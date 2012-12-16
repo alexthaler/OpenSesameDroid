@@ -3,14 +3,17 @@ package com.fortysevensixteen.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.fortysevensixteen.R;
 import com.fortysevensixteen.task.ImageUpdateTask;
@@ -19,6 +22,8 @@ import com.fortysevensixteen.task.RequestTask;
 public class MainActivity extends Activity {
 
     ImageView lockButton;
+    TextView urlText;
+    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,9 @@ public class MainActivity extends Activity {
 
         lockButton = (ImageView) findViewById(R.id.lockButton);
         lockButton.setOnClickListener(new LockButtonClickListener(this));
+        urlText = (TextView) findViewById(R.id.urlText);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     @Override
@@ -45,6 +53,17 @@ public class MainActivity extends Activity {
                 return true;
             default:
                 return true;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (sharedPreferences.getBoolean(getString(R.string.settingsDisplayUrl), false)) {
+            urlText.setText(getUrl());
+        } else {
+            urlText.setText("");
         }
     }
 
@@ -67,7 +86,8 @@ public class MainActivity extends Activity {
     }
 
     private String getUrl() {
-        return "http://192.168.1.1/test.html?foo=bar";
+        return sharedPreferences.getString(getString(R.string.settingsServerAddress), "") +
+                sharedPreferences.getString(getString(R.string.settingsRequestParameters), "");
     }
 
     private void executeHttpRequest() {
