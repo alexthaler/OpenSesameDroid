@@ -1,6 +1,7 @@
-package com.fortysevensixteen.task;
+package com.fortysevensixteen.opensesame.task;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -32,7 +33,9 @@ public class RequestTask extends AsyncTask<String, String, String> {
                 throw new IOException(statusLine.getReasonPhrase());
             }
         } catch (ClientProtocolException e) {
+            Log.d(this.getClass().getName(), "CPE!", e);
         } catch (IOException e) {
+            Log.d(this.getClass().getName(), "IOException!", e);
         }
         return responseString;
     }

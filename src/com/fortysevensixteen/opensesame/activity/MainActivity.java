@@ -1,4 +1,4 @@
-package com.fortysevensixteen.activity;
+package com.fortysevensixteen.opensesame.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,8 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.fortysevensixteen.R;
-import com.fortysevensixteen.task.RequestTask;
+import com.fortysevensixteen.opensesame.R;
+import com.fortysevensixteen.opensesame.task.RequestTask;
 
 public class MainActivity extends Activity {
 

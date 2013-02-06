@@ -1,12 +1,10 @@
-package com.fortysevensixteen.activity;
+package com.fortysevensixteen.opensesame.activity;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
-import com.fortysevensixteen.R;
-import com.fortysevensixteen.fragment.SettingsFragment;
+import com.fortysevensixteen.opensesame.fragment.SettingsFragment;
 
 public class SettingsActivity extends PreferenceActivity {
 

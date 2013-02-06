@@ -1,10 +1,8 @@
-package com.fortysevensixteen.fragment;
+package com.fortysevensixteen.opensesame.fragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.view.MenuItem;
-import com.fortysevensixteen.R;
+import com.fortysevensixteen.opensesame.R;
 
 public class SettingsFragment extends PreferenceFragment {
 
