@@ -4,3 +4,4 @@ gen
 out
 bin
 local.properties
+keystore

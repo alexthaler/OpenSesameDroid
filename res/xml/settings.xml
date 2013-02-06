@@ -7,20 +7,21 @@
             android:summary="Set the server to connect to."
             android:key="@string/settingsServerAddress"
             android:persistent="true"
-            android:defaultValue="http://"/>
+            android:defaultValue="http://0.0.0.0"/>
 
     <EditTextPreference
-                android:inputType="text"
-                android:title="RequestParameters"
-                android:summary="Params to send with request"
-                android:key="@string/settingsRequestParameters"
-                android:persistent="true"/>
+            android:inputType="text"
+            android:title="RequestParameters"
+            android:summary="Params to send with request"
+            android:key="@string/settingsRequestParameters"
+            android:persistent="true"
+            android:defaultValue="\?"/>
 
     <CheckBoxPreference
-        android:title="Display Url"
-        android:summary="Wether the url should be displayed on the main page."
-        android:key="@string/settingsDisplayUrl"
-        android:defaultValue="true"
-        android:persistent="true"/>
+            android:title="Display Url"
+            android:summary="Wether the url should be displayed on the main page."
+            android:key="@string/settingsDisplayUrl"
+            android:defaultValue="true"
+            android:persistent="true"/>
 
 </PreferenceScreen>

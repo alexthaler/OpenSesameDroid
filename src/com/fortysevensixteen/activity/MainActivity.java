@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.fortysevensixteen.R;
-import com.fortysevensixteen.task.ImageUpdateTask;
 import com.fortysevensixteen.task.RequestTask;
 
 public class MainActivity extends Activity {
@@ -24,6 +23,8 @@ public class MainActivity extends Activity {
     ImageView lockButton;
     TextView urlText;
     SharedPreferences sharedPreferences;
+
+    private static final String http_regex = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends Activity {
         urlText = (TextView) findViewById(R.id.urlText);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
     }
 
     @Override
@@ -70,6 +72,11 @@ public class MainActivity extends Activity {
     private class LockButtonClickListener implements View.OnClickListener {
 
         Context context;
+        Runnable r = new Runnable() {
+            public void run(){
+                lockButton.setImageResource(R.drawable.packlock_closed);
+            }
+        };
 
         private LockButtonClickListener(Context context) {
             this.context = context;
@@ -77,11 +84,8 @@ public class MainActivity extends Activity {
 
         public void onClick(View view) {
             executeHttpRequest();
-            Toast.makeText(context, "Door is now open.", Toast.LENGTH_SHORT);
-            lockButton.setImageResource(R.drawable.lock_open);
-            ImageUpdateTask task = new ImageUpdateTask((ImageView) findViewById(R.id.lockButton),
-                    3000, R.drawable.lock_closed);
-            task.execute();
+            lockButton.setImageResource(R.drawable.padlock_open);
+            lockButton.postDelayed(r, 2000);
         }
     }
 
@@ -92,9 +96,13 @@ public class MainActivity extends Activity {
 
     private void executeHttpRequest() {
         if(isOnline()) {
-            new RequestTask().execute(getUrl());
+            if(getUrl().matches(http_regex)) {
+                new RequestTask().execute(getUrl());
+            } else {
+                Toast.makeText(getBaseContext(), "Please set URL in settings", Toast.LENGTH_SHORT);
+            }
         } else {
-            Toast.makeText(this, "No network connection!", Toast.LENGTH_SHORT);
+            Toast.makeText(getBaseContext(), "No network connection!", Toast.LENGTH_SHORT);
         }
     }
 

@@ -18,7 +18,7 @@
             android:id="@+id/lockButton"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/lock_closed"
+            android:src="@drawable/packlock_closed"
             android:gravity="center"
             android:contentDescription="@string/lockButton"/>
 
