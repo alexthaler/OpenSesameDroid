@@ -20,9 +20,9 @@ import com.fortysevensixteen.opensesame.task.RequestTask;
 
 public class MainActivity extends Activity {
 
-    ImageView lockButton;
-    TextView urlText;
-    SharedPreferences sharedPreferences;
+    private ImageView lockButton;
+    private TextView urlText;
+    private SharedPreferences sharedPreferences;
 
     private static final String http_regex = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 
@@ -106,7 +106,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public boolean isOnline() {
+    private boolean isOnline() {
         ConnectivityManager cm =
             (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
