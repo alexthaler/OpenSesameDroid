@@ -5,3 +5,4 @@ out
 bin
 local.properties
 keystore
+ant.properties
