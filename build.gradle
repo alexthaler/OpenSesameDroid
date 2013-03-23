@@ -19,4 +19,38 @@ android {
         minSdkVersion 11
         targetSdkVersion 16
     }
+
+    signingConfigs {
+
+        debug {
+            storeFile file(debugKeyStorePathProp)
+            storePassword debugKeyStorePasswordProp
+            keyAlias debugKeyAliasProp
+            keyPassword debugKeyAliasPasswordProp
+        }
+
+        release {
+            storeFile file(releaseKeyStorePathProp)    
+            storePassword releaseKeyStorePasswordProp
+            keyAlias releaseKeyAliasProp
+            keyPassword releaseKeyAliasPasswordProp
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            zipAlign true
+        }
+
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    
+}
+
+task alignDebug (type: Exec) {
+    commandLine "./scripts/alignDebug.sh"
 }

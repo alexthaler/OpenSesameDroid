@@ -6,6 +6,7 @@ bin
 local.properties
 keystore
 ant.properties
+gradle.properties
 .gradle
 wrapper
 build
