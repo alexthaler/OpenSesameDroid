@@ -9,6 +9,7 @@ buildscript {
 }
 
 apply plugin: 'android'
+apply plugin: 'idea'
 
 android {
     compileSdkVersion 17
@@ -47,10 +48,4 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
-    
-}
-
-task alignDebug (type: Exec) {
-    commandLine "./scripts/alignDebug.sh"
 }
