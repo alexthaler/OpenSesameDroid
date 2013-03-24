@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.3'
+    }
+}
+
+apply plugin: 'android-library'
+
+dependencies {
+    releaseCompile files("libs")
+}
+
+android {
+    compileSdkVersion 17
+
+    defaultConfig {
+        versionCode 3025110
+        versionName "3.0.25 (585905-10)"
+        minSdkVersion 8
+        targetSdkVersion 16
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aild.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+    }
+}

@@ -11,6 +11,11 @@ buildscript {
 apply plugin: 'android'
 apply plugin: 'idea'
 
+dependencies {
+    compile files('extras/lib-google-play-services/libs/google-play-services.jar')
+    compile project(':extras:lib-google-play-services')
+}
+
 android {
     compileSdkVersion 17
 

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
     private ImageView lockButton;
     private TextView urlText;
     private SharedPreferences sharedPreferences;
+    private Button locationButton;
 
     private static final String http_regex = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 
@@ -34,6 +36,8 @@ public class MainActivity extends Activity {
         lockButton = (ImageView) findViewById(R.id.lockButton);
         lockButton.setOnClickListener(new LockButtonClickListener(this));
         urlText = (TextView) findViewById(R.id.urlText);
+        locationButton = (Button) findViewById(R.id.locationButton);
+        locationButton.setOnClickListener(new LocationButtonClickListener(this));
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -86,6 +90,20 @@ public class MainActivity extends Activity {
             executeHttpRequest();
             lockButton.setImageResource(R.drawable.padlock_open);
             lockButton.postDelayed(r, 2000);
+        }
+    }
+
+    private class LocationButtonClickListener implements View.OnClickListener {
+
+        Context context;
+
+        private LocationButtonClickListener(Context context) {
+            this.context = context;
+        }
+
+        @Override public void onClick(View v) {
+            Intent intent = new Intent(context, MapActivity.class);
+            startActivity(intent);
         }
     }
 

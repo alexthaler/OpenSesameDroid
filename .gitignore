@@ -1,5 +1,7 @@
 .idea/**
 *.iml
+*.ipr
+*.iws
 gen
 out
 bin
@@ -10,3 +12,4 @@ gradle.properties
 .gradle
 wrapper
 build
+.classpath

@@ -5,8 +5,19 @@
       android:versionName="1.0">
     <uses-sdk   android:minSdkVersion="11"
                 android:targetSdkVersion="15" />
+    <permission
+        android:name="com.fortysevensixteen.opensesame.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.fortysevensixteen.opensesame.permission.MAPS_RECEIVE"/>
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
     <application android:label="@string/app_name" android:icon="@drawable/logo">
         <activity android:name=".activity.MainActivity"
                   android:label="@string/app_name"
@@ -23,6 +34,20 @@
                  android:name="android.support.PARENT_ACTIVITY"
                  android:value="com.fortysevensixteen.MainActivity" />
         </activity>
+        <activity android:name=".activity.MapActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fortysevensixteen.MainActivity" />
+        </activity>
+
+        <!-- This key value is only valid for my keystore(s), you'll need to replace this with a key generated from
+         your keystore values in order for the maps functionality to work.  To do this see:
+         https://developers.google.com/maps/documentation/android/start#the_google_maps_api_key-->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="ADDYOURKEYHERE"/>
 
     </application>
 </manifest>
