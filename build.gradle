@@ -13,6 +13,7 @@ apply plugin: 'idea'
 
 dependencies {
     compile files('extras/lib-google-play-services/libs/google-play-services.jar')
+    compile files('src/main/libs/butterknife-1.3.0.jar')
     compile project(':extras:lib-google-play-services')
 }
 
